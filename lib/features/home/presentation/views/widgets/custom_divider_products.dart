@@ -4,7 +4,7 @@ import '../../../../../core/utils/app_images.dart';
 
 class CustomDividerProducts extends StatelessWidget {
   CustomDividerProducts({super.key, this.number});
-  int? number;
+  final int? number;
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -7,6 +7,7 @@ import '../../../../../core/utils/app_text_styles.dart';
 class FeaturedButton extends StatelessWidget {
    FeaturedButton({super.key,required this.onPressed});
   final VoidCallback onPressed;
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/cubits/product_cubit/products_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_divider_products.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/custom_grid_view_bloc_builder.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_home_appbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,17 +31,28 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
           icon: Icon(Icons.notifications),
           title: 'المنتجات',
           context: context),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: CustomSearchBar(),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child:Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: CustomSearchBar(
+               
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: CustomDividerProducts(number: context.read<ProductsCubit>().products,),
+            ),
+          
+          ],
+        ), 
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: CustomDividerProducts(),
-          ),
+  CustomGridViewBlocBuilder(),
         ],
+         
       ),
     );
   }

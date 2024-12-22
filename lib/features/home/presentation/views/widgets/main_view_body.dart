@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../cart_view.dart';
 import '../home_view.dart';
 import '../products_view.dart';
 
@@ -21,7 +22,14 @@ class _MainViewBodyState extends State<MainViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return returnBodyPage(widget.index);
+    return IndexedStack(
+      index:widget. index,
+      children: [
+        HomeView(),
+       ProductsView(),
+       CartView(),
+      ],
+    ) ;
   }
 }
 

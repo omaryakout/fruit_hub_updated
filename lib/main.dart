@@ -4,6 +4,7 @@ import 'core/services/bloc_observer.dart';
 import 'core/services/get_it.dart';
 import 'core/services/shared_pref_singleton.dart';
 import 'core/helper_functions/on_generate_route.dart';
+import 'features/home/presentation/views/home_view.dart';
 import 'features/on_boarding/onboard_general_view.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -46,7 +47,7 @@ class FruitHub extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         locale: const Locale('ar'),
-        home: SplashView(),
+        home:HomeView(),
         onGenerateRoute: onGenerateRoute,
         initialRoute: SplashView.routeName,
         builder: (context, child) {

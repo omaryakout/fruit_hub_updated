@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/features/home/presentation/cart_cubit/cart_cubit.dart';
 
 import '../cart_view.dart';
 import '../home_view.dart';
@@ -22,14 +24,17 @@ class _MainViewBodyState extends State<MainViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return IndexedStack(
-      index:widget. index,
-      children: [
-        HomeView(),
-       ProductsView(),
-       CartView(),
-      ],
-    ) ;
+    return BlocProvider(
+      create: (context) => CartCubit(),
+      child: IndexedStack(
+        index: widget.index,
+        children: [
+          HomeView(),
+          ProductsView(),
+          CartView(),
+        ],
+      ),
+    );
   }
 }
 

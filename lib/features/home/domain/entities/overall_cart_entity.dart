@@ -22,4 +22,14 @@ class OverallCartEntity {
   void removeProduct(CartItemEntity cartItem) {
     items.remove(cartItem);
   }
+
+  CartItemEntity getCartItemEntity(ProductEntity productEntityFromUser) {
+    for (var item in items) {
+      if (productEntityFromUser == item.productEntity) {
+        return item;
+      } 
+     
+      
+    } return  CartItemEntity(productEntity: productEntityFromUser, count: 1);
+  }
 }

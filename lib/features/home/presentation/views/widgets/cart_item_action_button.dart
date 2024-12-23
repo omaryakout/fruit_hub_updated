@@ -8,14 +8,17 @@ class CartItemActionButton extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:Icon(icon,color: iconColor,) ,
-      decoration: ShapeDecoration(
-        color: color,
-        shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(100),
-        
-      )),
+    return GestureDetector(
+      onTap:onPressed ,
+      child: Container(
+        child:Icon(icon,color: iconColor,) ,
+        decoration: ShapeDecoration(
+          color: color,
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100),
+          
+        )),
+      ),
     );
   }
 }

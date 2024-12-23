@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/helper_functions/colors.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/domain/entity/product_entity.dart';
+import '../../features/home/presentation/cart_cubit/cart_cubit.dart';
 import '../utils/app_images.dart';
 import '../utils/app_text_styles.dart';
 
 class FruitItem extends StatelessWidget {
-   FruitItem({super.key,required this.productEntity});
- final ProductEntity productEntity;
+  FruitItem({super.key, required this.productEntity});
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,14 +24,18 @@ class FruitItem extends StatelessWidget {
               top: 20,
               left: 16.5,
               right: 15.5,
-              child:Image.network(productEntity.imageUrl,width: double.infinity,fit:BoxFit.fill ,)),
+              child: Image.network(
+                productEntity.imageUrl,
+                width: double.infinity,
+                fit: BoxFit.fill,
+              )),
           Positioned(
             bottom: 16,
             left: 0,
             right: 0,
             child: ListTile(
               title: Text(
-               productEntity.name,
+                productEntity.name,
                 style: AppTextStyle.bold13.copyWith(color: Colors.black),
               ),
               subtitle: Text.rich(
@@ -48,7 +53,9 @@ class FruitItem extends StatelessWidget {
               trailing: CircleAvatar(
                 backgroundColor: AppColor.primaryColors,
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<CartCubit>().addProduct(productEntity);
+                    },
                     icon: Icon(
                       Icons.add,
                       color: Colors.white,

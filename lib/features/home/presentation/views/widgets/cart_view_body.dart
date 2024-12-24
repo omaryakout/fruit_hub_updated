@@ -29,7 +29,8 @@ class CartViewBody extends StatelessWidget {
               ],
             ),
           ),
-          CartList(),
+          CartList(
+          ),
         ],
       ),
      Positioned(

@@ -9,10 +9,11 @@ import '../../../../../core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_text_styles.dart';
+import '../../../domain/entities/cart_item_entity.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
-
+  const CartItem({super.key,required this.cartItemEntity});
+  final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +27,7 @@ class CartItem extends StatelessWidget {
             height: 95,
             width: 73,
             decoration:const BoxDecoration(color: Color(0xFFF3F5F7)),
-            child: Image.network('https://as2.ftcdn.net/v2/jpg/00/78/09/77/1000_F_78097722_DS0SKdmNCZLfefL1CP63kSbMzjjjv9Xy.jpg'), // Replace with Image.asset() or similar
+            // child: Image.network(cartItemEntity.productEntity.imageUrl), // Replace with Image.asset() or similar
           ),
           const SizedBox(width: 8), 
           Expanded(
@@ -37,7 +38,7 @@ class CartItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'بطيخ',
+                      '${cartItemEntity.productEntity.name}',
                       style: AppTextStyle.bold13.copyWith(color: Colors.black),
                     ),
                     const Spacer(), 
@@ -58,7 +59,7 @@ class CartItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 8), 
                 Text(
-                  '3 كج',
+                  '${cartItemEntity.calculateTotalweight()} كج',
                   style: AppTextStyle.regular13.copyWith(
                     color: Color(0XFFF4A91F), 
                   ),
@@ -70,7 +71,7 @@ class CartItem extends StatelessWidget {
                    Spacer(),
                    Padding(
                      padding: const EdgeInsets.only(left: 16),
-                     child: Text('60 kg',style:AppTextStyle.bold16.copyWith(color: AppColors.secondaryColor) ,),
+                     child: Text('${cartItemEntity.calculateTotalPrice()} جنيه',style:AppTextStyle.bold16.copyWith(color: AppColors.secondaryColor) ,),
                    )
                  ],
                ),

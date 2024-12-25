@@ -5,6 +5,10 @@ class CartItemEntity {
   final ProductEntity productEntity;
   int count;
 
+ProductEntity getProduct(ProductEntity productEntity) {
+    return productEntity;
+  }
+
   void increment() {
     count++;
   }

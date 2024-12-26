@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/features/auth/domain/repos/product_repo.dart';
+import 'package:fruits_hub/features/home/presentation/cart_item_cubit/cart_item_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/cubit/cart_cubit.dart';
 
 import '../../../../../core/cubits/product_cubit/products_cubit.dart';
@@ -27,8 +28,18 @@ class _MainViewBodyState extends State<MainViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ProductsCubit(getIt<ProductRepo>()),
+        ),
+        BlocProvider(
+          create: (context) => CartItemCubit(),
+        ),
+      ],
       child: IndexedStack(
         index: widget.index,
         children: [

@@ -6,10 +6,11 @@ import 'package:fruits_hub/features/home/presentation/views/widgets/cart_item_ac
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
+import '../../../domain/entities/cart_item_entity.dart';
 
 class CartBarButton extends StatefulWidget {
-  CartBarButton({super.key, required this.count});
-  int count;
+  CartBarButton({super.key, required this.cartItemEntity});
+  CartItemEntity cartItemEntity;
   @override
   State<CartBarButton> createState() => _CartBarButtonState();
 }
@@ -25,17 +26,18 @@ class _CartBarButtonState extends State<CartBarButton> {
           icon: Icons.add,
           iconColor: Colors.white,
           onPressed: () {
-            widget.count++;
-            setState(() {
-              
-            });
+           
+           widget.cartItemEntity.increment();
+           
+            context.read<CartItemCubit>().updateCartItem(widget.cartItemEntity);
+            
           },
         ),
         const SizedBox(
           width: 16,
         ),
         Text(
-          widget.count.toString(),
+          widget.cartItemEntity.count.toString(),
           style: AppTextStyle.bold16,
         ),
         const SizedBox(

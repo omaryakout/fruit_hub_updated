@@ -25,12 +25,11 @@ class CartItem extends StatefulWidget {
 class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CartCubit, CartState>(
+    return BlocConsumer<CartItemCubit, CartItemState>(
       listener: (context, state) {
-        if(state is CartAdd){
-          setState(() {
-            
-          });
+        if (state is CartItemUpdated) {
+          
+         
         }
       },
       builder: (context, state) {
@@ -85,7 +84,9 @@ class _CartItemState extends State<CartItem> {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        CartBarButton(count: widget.cartItemEntity.count,),
+                        CartBarButton(
+                          cartItemEntity: widget.cartItemEntity,
+                        ),
                         Spacer(),
                         Padding(
                           padding: const EdgeInsets.only(left: 16),

@@ -22,6 +22,6 @@ ProductEntity getProduct(ProductEntity productEntity) {
   }
 
   num calculateTotalweight() {
-    return productEntity.unitAmount * count;
+    return productEntity.ratingCount * count;
   }
 }

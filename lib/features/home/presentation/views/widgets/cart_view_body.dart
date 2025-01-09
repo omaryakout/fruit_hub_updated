@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/features/home/presentation/cubit/cart_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_appbar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_list.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_button.dart';
@@ -39,7 +41,7 @@ class CartViewBody extends StatelessWidget {
       right: 16,
        child: CustomButton(onPressed:() {
          
-       } ,text: Text('ادفع 120'),),
+       } ,text: Text('ادفع ${context.watch<CartCubit>().overallCartEntity.calculateTotalPrice()}'),),
      ),
       ] 
     );

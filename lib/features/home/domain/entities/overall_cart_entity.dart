@@ -15,6 +15,16 @@ class OverallCartEntity {
     return false;
   }
 
+  num calculateTotalPrice() {
+    double price = 0;
+    for (var item in items) {
+      
+      price = price + item.calculateTotalPrice();
+      
+    }
+    return price;
+  }
+
   void addNewProduct(CartItemEntity cartItem) {
     items.add(cartItem);
   }

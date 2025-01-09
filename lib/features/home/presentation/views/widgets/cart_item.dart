@@ -27,10 +27,7 @@ class _CartItemState extends State<CartItem> {
   Widget build(BuildContext context) {
     return BlocConsumer<CartItemCubit, CartItemState>(
       listener: (context, state) {
-        if (state is CartItemUpdated) {
-          
-         
-        }
+        // TODO: implement listener
       },
       builder: (context, state) {
         return Container(

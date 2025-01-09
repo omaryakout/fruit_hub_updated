@@ -26,11 +26,11 @@ class _CartBarButtonState extends State<CartBarButton> {
           icon: Icons.add,
           iconColor: Colors.white,
           onPressed: () {
-           
-           widget.cartItemEntity.increment();
-           
+              widget.cartItemEntity.increment();
+            print(widget.cartItemEntity);
             context.read<CartItemCubit>().updateCartItem(widget.cartItemEntity);
-            
+            context.read<CartCubit>().addProduct(widget.cartItemEntity.productEntity);
+          
           },
         ),
         const SizedBox(
@@ -47,7 +47,10 @@ class _CartBarButtonState extends State<CartBarButton> {
           color: Color(0XFFF3F5F7),
           icon: Icons.remove,
           iconColor: Color(0XFF979899),
-          onPressed: () {},
+          onPressed: () {
+            widget.cartItemEntity.decrement();
+            context.read<CartItemCubit>().updateCartItem(widget.cartItemEntity);
+          },
         ),
       ],
     );

@@ -1,7 +1,8 @@
 import 'dart:io';
+import 'package:equatable/equatable.dart';
 import 'package:fruits_hub/features/auth/domain/entity/review_entity.dart';
 
-class ProductEntity {
+class ProductEntity extends Equatable{
   final String name;
   final String description;
   final num price;
@@ -31,6 +32,10 @@ class ProductEntity {
     required this.unitAmount,
     this.url,
   });
+  
+  @override
+  
+  List<Object?> get props => [name,code];
 }
 
 

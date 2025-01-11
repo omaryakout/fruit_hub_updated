@@ -18,11 +18,13 @@ class OverallCartEntity {
   num calculateTotalPrice() {
     double price = 0;
     for (var item in items) {
-      
       price = price + item.calculateTotalPrice();
-      
     }
     return price;
+  }
+
+  void deleteProduct(CartItemEntity cartItem) {
+    items.remove(cartItem);
   }
 
   void addNewProduct(CartItemEntity cartItem) {

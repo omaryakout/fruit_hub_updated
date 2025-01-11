@@ -4,6 +4,7 @@ import 'package:fruits_hub/features/home/presentation/cubit/cart_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_appbar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_list.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_button.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/pay_button_bloc_consumer.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 import 'cart_header.dart';
@@ -39,9 +40,7 @@ class CartViewBody extends StatelessWidget {
       bottom: MediaQuery.sizeOf(context).height*0.07,
       left: 16,
       right: 16,
-       child: CustomButton(onPressed:() {
-         
-       } ,text: Text('ادفع ${context.watch<CartCubit>().overallCartEntity.calculateTotalPrice()}'),),
+       child: PayButtonBlocConsumer(),
      ),
       ] 
     );

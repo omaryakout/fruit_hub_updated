@@ -20,7 +20,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-   setupGetit();
+  setupGetit();
   runApp(const FruitHub());
 }
 
@@ -47,7 +47,7 @@ class FruitHub extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         locale: const Locale('ar'),
-        home:HomeView(),
+        home: HomeView(),
         onGenerateRoute: onGenerateRoute,
         initialRoute: SplashView.routeName,
         builder: (context, child) {

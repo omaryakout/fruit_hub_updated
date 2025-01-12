@@ -48,7 +48,11 @@ class _LoginPageState extends State<LoginPage> {
           builder: (context, state) {
             return Scaffold(
               appBar: buildAppBar(
-                context:   context,title:  'تسجيل الدخول',icon:  Icon(Icons.arrow_back_sharp),function:  () {}),
+                  showNotificationButton: false,
+                  context: context,
+                  title: 'تسجيل الدخول',
+                  icon: Icon(Icons.arrow_back_sharp),
+                  function: () {}),
               body: SingleChildScrollView(
                 child: Padding(
                   padding:

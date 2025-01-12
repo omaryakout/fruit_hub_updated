@@ -21,25 +21,27 @@ import '../../../core/services/firebase_auth.dart';
 import '../domain/repos/auth_repo.dart';
 import 'cubits/signup_cubit/signup_cubit.dart';
 
-
 class SignUpPage extends StatelessWidget {
   SignUpPage({super.key});
   static const String routeName = 'SignUpPage';
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignupCubit( getIt<AuthRepo>()),
+      create: (context) => SignupCubit(getIt<AuthRepo>()),
       child: SafeArea(
         child: Scaffold(
           appBar: buildAppBar(
-             context:  context, title: 'حساب جديد',icon:  const Icon(Icons.arrow_back_rounded),function:  () {
-            Navigator.of(context).pop();
-          }),
+              showNotificationButton: false,
+              context: context,
+              title: 'حساب جديد',
+              icon: const Icon(Icons.arrow_back_rounded),
+              function: () {
+                Navigator.of(context).pop();
+              }),
           body: ConsumerBlocSignUp(),
         ),
       ),
     );
   }
 }
-

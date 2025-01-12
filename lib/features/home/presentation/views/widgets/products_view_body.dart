@@ -27,6 +27,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(
+          showNotificationButton: true,
           function: () {},
           icon: Icon(Icons.notifications),
           title: 'المنتجات',
@@ -34,25 +35,23 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child:Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CustomSearchBar(
-               
-              ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: CustomSearchBar(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: CustomDividerProducts(
+                    number: context.read<ProductsCubit>().products,
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CustomDividerProducts(number: context.read<ProductsCubit>().products,),
-            ),
-          
-          ],
-        ), 
           ),
-  CustomGridViewBlocBuilder(),
+          CustomGridViewBlocBuilder(),
         ],
-         
       ),
     );
   }

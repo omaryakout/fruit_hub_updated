@@ -18,7 +18,9 @@ class InactiveStepItem extends StatelessWidget {
             child: Text(
               int.toString(),
               style: AppTextStyle.semiBold13.copyWith(color: Colors.black),
-            )),
+            ),
+            radius: 11.5,
+            ),
         SizedBox(
           width: 4,
         ),

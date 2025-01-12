@@ -43,6 +43,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           ),
         ),
         SizedBox(height: 32,),
+        SizedBox(height: 2,)
       ],
     );
   }

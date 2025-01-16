@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/widgets/custom_appBar.dart';
 import 'widgets/check_out_view_body.dart';
 

@@ -4,6 +4,7 @@ import 'package:fruits_hub/features/check_out/presentation/views/widgets/active_
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/check_out_steps.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/checkout_steps_page_view.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/inactive_step_item.dart';
+import 'package:fruits_hub/features/check_out/presentation/views/widgets/shipping_section.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -34,7 +35,10 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     return Column(
       children: [
         CheckOutSteps(),
-       Expanded(child: CheckoutStepsPageView(pageController: pageController,)),
+        Expanded(
+            child: CheckoutStepsPageView(
+          pageController: pageController,
+        )),
         CustomButton(
           onPressed: () {},
           text: Text(
@@ -42,9 +46,19 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
             style: AppTextStyle.bold13.copyWith(color: Colors.white),
           ),
         ),
-        SizedBox(height: 32,),
-        SizedBox(height: 2,)
+        SizedBox(
+          height: 32,
+        ),
       ],
     );
   }
+}
+
+List<Widget> getPages() {
+  return [
+    const ShippingSection(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+  ];
 }

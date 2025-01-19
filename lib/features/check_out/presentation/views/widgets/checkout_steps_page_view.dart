@@ -10,9 +10,12 @@ class CheckoutStepsPageView extends StatelessWidget {
     return PageView.builder(
       itemCount: getPages().length,
       itemBuilder: (context, index) {
-        return Placeholder();
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: getPages()[index],
+        );
       },
-      physics: AlwaysScrollableScrollPhysics(),
+      physics: NeverScrollableScrollPhysics(),
       controller: pageController,
     );
   }

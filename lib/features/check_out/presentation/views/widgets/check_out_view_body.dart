@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/active_step_item.dart';
+import 'package:fruits_hub/features/check_out/presentation/views/widgets/address_input_section.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/check_out_steps.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/checkout_steps_page_view.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/inactive_step_item.dart';
+import 'package:fruits_hub/features/check_out/presentation/views/widgets/payment_section.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/shipping_section.dart';
-
 import '../../../../../core/widgets/custom_button.dart';
 
 class CheckOutViewBody extends StatefulWidget {
@@ -21,6 +22,16 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   @override
   void initState() {
     pageController = PageController();
+    currentPageIndex = 0;
+    pageController.addListener(
+      () {
+        if (pageController.hasClients) {
+          setState(() {
+            currentPageIndex = pageController.page?.toInt() ?? 0;
+          });
+        }
+      },
+    );
     super.initState();
   }
 
@@ -30,19 +41,30 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     super.dispose();
   }
 
+  int currentPageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CheckOutSteps(),
+        Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          child: CheckOutSteps(
+            pageIndex: currentPageIndex,
+            pageController: pageController,
+          ),
+        ),
         Expanded(
             child: CheckoutStepsPageView(
           pageController: pageController,
         )),
         CustomButton(
-          onPressed: () {},
+          onPressed: () {
+            pageController.nextPage(
+                duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+          },
           text: Text(
-            'التالي',
+            getButtonText(pageController.page!.toInt()),
             style: AppTextStyle.bold13.copyWith(color: Colors.white),
           ),
         ),
@@ -52,13 +74,31 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       ],
     );
   }
+
+  String getButtonText(int currentPageIndex) {
+    if (pageController.hasClients) {
+       switch (currentPageIndex) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'ادفع باستخدام paypal';
+
+      default:
+        return 'التالي';
+    }
+    } else {
+      return 'التالي';
+    }
+   
+  }
 }
 
 List<Widget> getPages() {
   return [
     const ShippingSection(),
-    const SizedBox(),
-    const SizedBox(),
-    const SizedBox(),
+    AddressInputSection(),
+    const PaymentSection(),
   ];
 }

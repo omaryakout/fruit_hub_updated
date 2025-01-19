@@ -8,7 +8,7 @@ import '../../../core/helper_functions/build_error_bar.dart';
 import '../../../core/services/get_it.dart';
 import '../../../core/utils/app_text_styles.dart';
 import '../../../core/widgets/custom_button.dart';
-import '../../../core/widgets/custom_divider.dart';
+import '../../../core/widgets/custom_divider_with_text.dart';
 import '../../../core/widgets/custom_login_button.dart';
 import '../../home/main_view.dart';
 import '../domain/repos/auth_repo.dart';

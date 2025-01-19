@@ -7,7 +7,7 @@ import 'package:fruits_hub/core/widgets/custom_text_form_Field.dart';
 import 'package:fruits_hub/core/widgets/custom_appBar.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/core/widgets/custom_check_box.dart';
-import 'package:fruits_hub/core/widgets/custom_divider.dart';
+import 'package:fruits_hub/core/widgets/custom_divider_with_text.dart';
 import 'package:fruits_hub/core/widgets/custom_login_button.dart';
 import 'package:fruits_hub/core/constants/constants.dart';
 import 'package:fruits_hub/core/utils/app_images.dart';

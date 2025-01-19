@@ -3,19 +3,30 @@ import 'package:fruits_hub/features/check_out/presentation/views/widgets/inactiv
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/step_item.dart';
 
 class CheckOutSteps extends StatelessWidget {
-  const CheckOutSteps({super.key});
-
+  CheckOutSteps(
+      {super.key, required this.pageIndex, required this.pageController});
+  int pageIndex;
+  PageController pageController;
   @override
   Widget build(BuildContext context) {
     return Row(
         children: List.generate(
-      4,
+      getSteps().length,
       (index) {
         return Expanded(
-          child: StepItem(
-            index: index+1,
-           isActive: false,
-            text: getSteps()[index],
+          child: Center(
+            child: GestureDetector(
+              onTap: () {
+                pageController.animateToPage(index,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.bounceIn);
+              },
+              child: StepItem(
+                index: index + 1,
+                isActive: index <= pageIndex,
+                text: getSteps()[index],
+              ),
+            ),
           ),
         );
       },
@@ -24,5 +35,5 @@ class CheckOutSteps extends StatelessWidget {
 }
 
 List<String> getSteps() {
-  return['الشحن','الدفع','العنوان','المراجعة'];
+  return ['الشحن', 'العنوان', 'المراجعة'];
 }

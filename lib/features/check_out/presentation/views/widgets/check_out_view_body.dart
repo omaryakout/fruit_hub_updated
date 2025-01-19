@@ -22,16 +22,12 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   @override
   void initState() {
     pageController = PageController();
-    currentPageIndex = 0;
-    pageController.addListener(
-      () {
-        if (pageController.hasClients) {
-          setState(() {
-            currentPageIndex = pageController.page?.toInt() ?? 0;
-          });
-        }
-      },
-    );
+
+    pageController.addListener(() {
+      setState(() {
+        currentPageIndex = pageController.page!.toInt();
+      });
+    });
     super.initState();
   }
 
@@ -77,21 +73,20 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   String getButtonText(int currentPageIndex) {
     if (pageController.hasClients) {
-       switch (currentPageIndex) {
-      case 0:
-        return 'التالي';
-      case 1:
-        return 'التالي';
-      case 2:
-        return 'ادفع باستخدام paypal';
+      switch (currentPageIndex) {
+        case 0:
+          return 'التالي';
+        case 1:
+          return 'التالي';
+        case 2:
+          return 'ادفع باستخدام paypal';
 
-      default:
-        return 'التالي';
-    }
+        default:
+          return 'التالي';
+      }
     } else {
       return 'التالي';
     }
-   
   }
 }
 

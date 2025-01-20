@@ -18,12 +18,11 @@ class PayButtonBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onPressed: () {
-            if(context.read<CartCubit>().overallCartEntity.items.isNotEmpty){
-              Navigator.pushNamed(context, CheckOutView.routeName);
-            }else{
-               buildError(context, 'السلة فارغة');
-            }
-           
+            Navigator.pushNamed(
+              context,
+              CheckOutView.routeName,
+              arguments: context.read<CartCubit>().overallCartEntity.items,
+            );
           },
           text: Text(
               'ادفع ${context.watch<CartCubit>().overallCartEntity.calculateTotalPrice()}'),
@@ -32,5 +31,3 @@ class PayButtonBlocConsumer extends StatelessWidget {
     );
   }
 }
-
-

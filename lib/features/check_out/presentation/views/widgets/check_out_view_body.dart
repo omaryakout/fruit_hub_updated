@@ -18,15 +18,17 @@ class CheckOutViewBody extends StatefulWidget {
 
 class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   late PageController pageController;
-
+  int currentPageIndex = 0;
   @override
   void initState() {
     pageController = PageController();
 
     pageController.addListener(() {
-      setState(() {
-        currentPageIndex = pageController.page!.toInt();
-      });
+      if (pageController.hasClients) {
+        setState(() {
+          currentPageIndex = pageController.page!.round();
+        });
+      }
     });
     super.initState();
   }
@@ -36,8 +38,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     pageController.dispose();
     super.dispose();
   }
-
-  int currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +56,16 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         )),
         CustomButton(
           onPressed: () {
-            pageController.nextPage(
-                duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+            if (pageController.hasClients &&
+                currentPageIndex < getPages().length - 1) {
+              pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            }
           },
           text: Text(
-            getButtonText(pageController.page!.toInt()),
+            getButtonText(),
             style: AppTextStyle.bold13.copyWith(color: Colors.white),
           ),
         ),
@@ -71,7 +76,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     );
   }
 
-  String getButtonText(int currentPageIndex) {
+  String getButtonText() {
     if (pageController.hasClients) {
       switch (currentPageIndex) {
         case 0:
@@ -97,3 +102,94 @@ List<Widget> getPages() {
     const PaymentSection(),
   ];
 }
+
+
+
+// class CheckOutViewBody extends StatefulWidget {
+//   const CheckOutViewBody({super.key});
+
+//   @override
+//   State<CheckOutViewBody> createState() => _CheckOutViewBodyState();
+// }
+
+// class _CheckOutViewBodyState extends State<CheckOutViewBody> {
+//   late PageController pageController;
+//   int currentPageIndex = 0;
+
+//   @override
+//   void initState() {
+//     pageController = PageController();
+
+//     pageController.addListener(() {
+//       if (pageController.hasClients) {
+//         setState(() {
+//           currentPageIndex = pageController.page!.round();
+//         });
+//       }
+//     });
+//     super.initState();
+//   }
+
+//   @override
+//   void dispose() {
+//     pageController.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 16),
+//           child: CheckOutSteps(
+//             pageIndex: currentPageIndex,
+//             pageController: pageController,
+//           ),
+//         ),
+//         Expanded(
+//           child: CheckoutStepsPageView(
+//             pageController: pageController,
+//           ),
+//         ),
+//         CustomButton(
+//           onPressed: () {
+//             if (pageController.hasClients &&
+//                 currentPageIndex < getPages().length - 1) {
+//               pageController.nextPage(
+//                 duration: const Duration(milliseconds: 300),
+//                 curve: Curves.easeInOut,
+//               );
+//             }
+//           },
+//           text: Text(
+//             getButtonText(),
+//             style: AppTextStyle.bold13.copyWith(color: Colors.white),
+//           ),
+//         ),
+//         const SizedBox(height: 32),
+//       ],
+//     );
+//   }
+
+//   String getButtonText() {
+//     switch (currentPageIndex) {
+//       case 0:
+//         return 'التالي';
+//       case 1:
+//         return 'التالي';
+//       case 2:
+//         return 'ادفع باستخدام paypal';
+//       default:
+//         return 'التالي';
+//     }
+//   }
+// }
+
+// List<Widget> getPages() {
+//   return [
+//     const ShippingSection(),
+//     AddressInputSection(),
+//     const PaymentSection(),
+//   ];
+// }

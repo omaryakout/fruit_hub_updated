@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/home/domain/entities/cart_item_entity.dart';
+import 'package:fruits_hub/features/home/domain/entities/overall_cart_entity.dart';
 import 'package:fruits_hub/features/home/main_view.dart';
 import '../../features/best_selling_faeature/views/best_selling_view.dart';
 import '../../features/check_out/presentation/views/check_out_view.dart';
@@ -16,7 +17,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case CheckOutView.routeName:
       return MaterialPageRoute(
           builder: (context) => CheckOutView(
-                cartItems: settings.arguments as List<CartItemEntity>,
+                overallCartEntity: settings.arguments as OverallCartEntity
               ));
     case BestSellingView.routeName:
       return MaterialPageRoute(builder: (context) => const BestSellingView());

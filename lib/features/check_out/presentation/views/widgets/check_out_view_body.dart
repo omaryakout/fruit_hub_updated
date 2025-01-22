@@ -7,7 +7,10 @@ import 'package:fruits_hub/features/check_out/presentation/views/widgets/checkou
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/inactive_step_item.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/payment_section.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/shipping_section.dart';
+import 'package:provider/provider.dart';
+import '../../../../../core/helper_functions/build_error_bar.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../domain/entities/order_entity.dart';
 
 class CheckOutViewBody extends StatefulWidget {
   const CheckOutViewBody({super.key});
@@ -17,6 +20,7 @@ class CheckOutViewBody extends StatefulWidget {
 }
 
 class _CheckOutViewBodyState extends State<CheckOutViewBody> {
+   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late PageController pageController;
   int currentPageIndex = 0;
   @override
@@ -52,16 +56,18 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         ),
         Expanded(
             child: CheckoutStepsPageView(
+              formKey:formKey ,
           pageController: pageController,
         )),
         CustomButton(
           onPressed: () {
-            if (pageController.hasClients &&
-                currentPageIndex < getPages().length - 1) {
+            if (context.read<OrderEntity>().payWithCash != null) {
               pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );
+            } else {
+              buildError(context, 'برجاء اختيار طريقة للدفع');
             }
           },
           text: Text(
@@ -93,15 +99,13 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       return 'التالي';
     }
   }
+
+
+
+
 }
 
-List<Widget> getPages() {
-  return [
-    const ShippingSection(),
-    AddressInputSection(),
-    const PaymentSection(),
-  ];
-}
+
 
 
 

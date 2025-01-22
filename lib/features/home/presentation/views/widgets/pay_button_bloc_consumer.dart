@@ -21,7 +21,7 @@ class PayButtonBlocConsumer extends StatelessWidget {
             Navigator.pushNamed(
               context,
               CheckOutView.routeName,
-              arguments: context.read<CartCubit>().overallCartEntity.items,
+              arguments: context.read<CartCubit>().overallCartEntity,
             );
           },
           text: Text(

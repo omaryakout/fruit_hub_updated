@@ -27,6 +27,6 @@ ProductEntity getProduct(ProductEntity productEntity) {
   }
   
   @override
-  // TODO: implement props
+  
   List<Object?> get props =>[productEntity];
 }

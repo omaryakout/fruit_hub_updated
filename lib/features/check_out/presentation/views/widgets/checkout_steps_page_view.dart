@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/address_input_section.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/check_out_steps.dart';
@@ -7,9 +8,11 @@ import 'package:fruits_hub/features/check_out/presentation/views/widgets/shippin
 import 'check_out_view_body.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
-  CheckoutStepsPageView({super.key, required this.pageController,required this.formKey});
+  CheckoutStepsPageView(
+      {super.key, required this.pageController, required this.formKey,required this.valueListenable});
   final PageController pageController;
   final GlobalKey<FormState> formKey;
+  ValueListenable<AutovalidateMode> valueListenable;
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
@@ -25,12 +28,14 @@ class CheckoutStepsPageView extends StatelessWidget {
     );
   }
 
-
   List<Widget> getPages() {
-  return [
-    const ShippingSection(),
-    AddressInputSection(formKey: formKey,),
-    const PaymentSection(),
-  ];
-}
+    return [
+      const ShippingSection(),
+      AddressInputSection(
+        valueListenable: valueListenable,
+        formKey: formKey,
+      ),
+     PaymentSection(pageController: pageController,),
+    ];
+  }
 }

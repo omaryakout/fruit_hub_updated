@@ -20,9 +20,11 @@ class CheckOutViewBody extends StatefulWidget {
 }
 
 class _CheckOutViewBodyState extends State<CheckOutViewBody> {
-   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late PageController pageController;
   int currentPageIndex = 0;
+  ValueNotifier<AutovalidateMode> valueNotifier =
+      ValueNotifier(AutovalidateMode.disabled);
   @override
   void initState() {
     pageController = PageController();
@@ -40,46 +42,69 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   @override
   void dispose() {
     pageController.dispose();
+    valueNotifier.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: CheckOutSteps(
-            pageIndex: currentPageIndex,
+    return 
+       Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: CheckOutSteps(
+              pageIndex: currentPageIndex,
+              pageController: pageController,
+            ),
+          ),
+          Expanded(
+              child: CheckoutStepsPageView(
+            valueListenable: valueNotifier,
+            formKey: formKey,
             pageController: pageController,
+          )),
+    CustomButton(
+            onPressed: () {
+              var orderEntity = context.read<OrderEntity>();
+              if (pageController.page == 0) {
+                _selectShippingMethod(context);
+              } else if (pageController.page == 1) {
+                _handleshippingAddress();
+              }
+            },
+            text: Text(
+              getButtonText(),
+              style: AppTextStyle.bold13.copyWith(color: Colors.white),
+            ),
           ),
-        ),
-        Expanded(
-            child: CheckoutStepsPageView(
-              formKey:formKey ,
-          pageController: pageController,
-        )),
-        CustomButton(
-          onPressed: () {
-            if (context.read<OrderEntity>().payWithCash != null) {
-              pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            } else {
-              buildError(context, 'برجاء اختيار طريقة للدفع');
-            }
-          },
-          text: Text(
-            getButtonText(),
-            style: AppTextStyle.bold13.copyWith(color: Colors.white),
+          SizedBox(
+            height: 32,
           ),
-        ),
-        SizedBox(
-          height: 32,
-        ),
-      ],
-    );
+        ],
+      );
+    
+  }
+
+  void _selectShippingMethod(BuildContext context) {
+    if (context.read<OrderEntity>().payWithCash != null) {
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      buildError(context, 'برجاء اختيار طريقة للدفع');
+    }
+  }
+
+  void _handleshippingAddress() {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      pageController.animateToPage(currentPageIndex + 1,
+          duration: Duration(milliseconds: 400), curve: Curves.bounceIn);
+    } else {
+      valueNotifier.value = AutovalidateMode.always;
+    }
   }
 
   String getButtonText() {
@@ -99,10 +124,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       return 'التالي';
     }
   }
-
-
-
-
 }
 
 

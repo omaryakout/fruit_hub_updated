@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
+import 'package:fruits_hub/features/check_out/presentation/add_order_cubit/add_order_cubit.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/active_step_item.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/address_input_section.dart';
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/check_out_steps.dart';
@@ -48,42 +50,48 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-       Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            child: CheckOutSteps(
-              pageIndex: currentPageIndex,
+    return BlocConsumer<AddOrderCubit, AddOrderState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: CheckOutSteps(
+                pageIndex: currentPageIndex,
+                pageController: pageController,
+              ),
+            ),
+            Expanded(
+                child: CheckoutStepsPageView(
+              valueListenable: valueNotifier,
+              formKey: formKey,
               pageController: pageController,
+            )),
+            CustomButton(
+              onPressed: () {
+                var orderEntity = context.read<OrderEntity>();
+                if (pageController.page == 0) {
+                  _selectShippingMethod(context);
+                } else if (pageController.page == 1) {
+                  _handleshippingAddress();
+                }
+                context.read<AddOrderCubit>().addData(order: orderEntity);
+              },
+              text: Text(
+                getButtonText(),
+                style: AppTextStyle.bold13.copyWith(color: Colors.white),
+              ),
             ),
-          ),
-          Expanded(
-              child: CheckoutStepsPageView(
-            valueListenable: valueNotifier,
-            formKey: formKey,
-            pageController: pageController,
-          )),
-    CustomButton(
-            onPressed: () {
-              var orderEntity = context.read<OrderEntity>();
-              if (pageController.page == 0) {
-                _selectShippingMethod(context);
-              } else if (pageController.page == 1) {
-                _handleshippingAddress();
-              }
-            },
-            text: Text(
-              getButtonText(),
-              style: AppTextStyle.bold13.copyWith(color: Colors.white),
+            SizedBox(
+              height: 32,
             ),
-          ),
-          SizedBox(
-            height: 32,
-          ),
-        ],
-      );
-    
+          ],
+        );
+      },
+    );
   }
 
   void _selectShippingMethod(BuildContext context) {

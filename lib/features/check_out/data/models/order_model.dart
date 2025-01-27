@@ -17,17 +17,32 @@ class OrderModel {
       required this.orderProducts,
       required this.paymentMethod});
 
-  factory OrderModel.fromOrderProductModel(
-      OrderEntity orderEntity) {
+  factory OrderModel.fromOrderProductModel(OrderEntity orderEntity) {
     return OrderModel(
-        totalPrice: orderEntity.overallCartEntity.calculateTotalPrice().toDouble(),
+        totalPrice:
+            orderEntity.overallCartEntity.calculateTotalPrice().toDouble(),
         uid: orderEntity.uid,
-        shippingAddressModel:ShippingAddressModel.fromShippingAddressEntity(orderEntity.shippingAddressEntity) ,
-        orderProducts:orderEntity.overallCartEntity.items.map((e) {
-          return OrderProductModel.fromCartItemEntity(
-            cartItem: e
-          );
-        },).toList(),
-        paymentMethod: orderEntity.payWithCash!?'cash':'online');
+        shippingAddressModel: ShippingAddressModel.fromShippingAddressEntity(
+            orderEntity.shippingAddressEntity),
+        orderProducts: orderEntity.overallCartEntity.items.map(
+          (e) {
+            return OrderProductModel.fromCartItemEntity(cartItem: e);
+          },
+        ).toList(),
+        paymentMethod: orderEntity.payWithCash! ? 'cash' : 'online');
+  }
+
+  toJson() {
+    return {
+      'totalPrice': totalPrice,
+      'uid': uid,
+      'shippingAddressModel': shippingAddressModel.toJson(),
+      'orderProducts': orderProducts
+          .map(
+            (e) => e.toJson(),
+          )
+          .toList(),
+      'paymentMethod': paymentMethod,
+    };
   }
 }

@@ -14,5 +14,4 @@ final class AddOrderFailure extends AddOrderState {
   final String errMessge;
 
   AddOrderFailure({required this.errMessge});
-  
 }

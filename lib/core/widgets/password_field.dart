@@ -10,22 +10,20 @@ class PassWordField extends StatefulWidget {
 }
 
 class _PassWordFieldState extends State<PassWordField> {
-  bool obsecureText = true ;
+  bool obsecureText = true;
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      onSaved:widget.onSaved,
+      onSaved: widget.onSaved,
       obsecureText: obsecureText,
       keyBoardType: TextInputType.streetAddress,
       suffixIcon: GestureDetector(
         child: Icon(
-        obsecureText?  Icons.remove_red_eye_outlined : Icons.visibility_off ,
+          obsecureText ? Icons.remove_red_eye_outlined : Icons.visibility_off,
         ),
         onTap: () {
           obsecureText = !obsecureText;
-          setState(() {
-            
-          });
+          setState(() {});
         },
       ),
       label: Text('كلمة المرور'),

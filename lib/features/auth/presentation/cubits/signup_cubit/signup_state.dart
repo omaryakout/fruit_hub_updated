@@ -13,9 +13,8 @@ class SignupSucess extends SignupState {
   SignupSucess({required this.userEntity});
 }
 
+class SignupFailure extends SignupState {
+  SignupFailure({required this.message});
 
-   class SignupFailure extends SignupState {
-   SignupFailure({required  this.message});
-
- final String message;
+  final String message;
 }

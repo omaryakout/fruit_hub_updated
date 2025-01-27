@@ -17,8 +17,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case CheckOutView.routeName:
       return MaterialPageRoute(
           builder: (context) => CheckOutView(
-                overallCartEntity: settings.arguments as OverallCartEntity
-              ));
+              overallCartEntity: settings.arguments as OverallCartEntity));
     case BestSellingView.routeName:
       return MaterialPageRoute(builder: (context) => const BestSellingView());
     case OnBoardGeneralView.routeName:

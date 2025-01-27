@@ -14,7 +14,8 @@ class OrderProductModel {
     required this.price,
     required this.quantity,
   });
-  factory OrderProductModel.fromCartItemEntity({required CartItemEntity cartItem}) {
+  factory OrderProductModel.fromCartItemEntity(
+      {required CartItemEntity cartItem}) {
     return OrderProductModel(
         name: cartItem.productEntity.name,
         code: cartItem.productEntity.code,

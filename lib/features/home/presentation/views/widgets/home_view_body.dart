@@ -65,14 +65,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 ],
               ),
             ),
-            CustomGridViewBlocBuilder(
-              
-            ),
+            CustomGridViewBlocBuilder(),
           ],
         ),
       ),
     );
   }
 }
-
-

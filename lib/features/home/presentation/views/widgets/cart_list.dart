@@ -7,27 +7,26 @@ import '../../../domain/entities/overall_cart_entity.dart';
 
 class CartList extends StatelessWidget {
   const CartList({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
       listener: (context, state) {
-        if(state is CartAdd){
-          
-        }
+        if (state is CartAdd) {}
       },
       builder: (context, state) {
         return SliverList.separated(
-            separatorBuilder: (context, index) {
+          separatorBuilder: (context, index) {
             return const SizedBox(
               height: 10,
             );
           },
           itemCount: context.read<CartCubit>().overallCartEntity.items.length,
           itemBuilder: (context, index) {
-            return CartItem(cartItemEntity:context.read<CartCubit>().overallCartEntity.items[index] );
+            return CartItem(
+                cartItemEntity:
+                    context.read<CartCubit>().overallCartEntity.items[index]);
           },
-        
         );
       },
     );

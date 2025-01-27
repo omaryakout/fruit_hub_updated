@@ -6,12 +6,9 @@ class BottomNavigationBarEntity {
   BottomNavigationBarEntity(
       {required this.activeImages,
       required this.inActiveImages,
-      required this.name
-      
-      });
+      required this.name});
   final String activeImages, inActiveImages;
   final String name;
- 
 }
 
 List<BottomNavigationBarEntity> customBottomNavigationBarItems() {

@@ -9,12 +9,9 @@ class ListFeatured extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: 
-          List.generate(3, (index) {
-            return FeaturedItem();
-          }, growable: false)
-        
-      ),
+          children: List.generate(3, (index) {
+        return FeaturedItem();
+      }, growable: false)),
     );
   }
 }

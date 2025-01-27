@@ -17,8 +17,8 @@ class CustomLoginButton extends StatelessWidget {
         style: TextButton.styleFrom(
           minimumSize: Size(double.infinity, 50),
           shape: RoundedRectangleBorder(
-            
-            side: BorderSide(color: Color.fromARGB(255, 230, 197, 197), width: 1),
+            side:
+                BorderSide(color: Color.fromARGB(255, 230, 197, 197), width: 1),
             borderRadius: BorderRadius.circular(16),
           ),
         ),

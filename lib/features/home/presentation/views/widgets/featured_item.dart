@@ -10,48 +10,56 @@ class FeaturedItem extends StatelessWidget {
 // svg.SvgPicture.asset(Assets.imagesBackgroundTestfeature)
   @override
   Widget build(BuildContext context) {
-     var itemWidth = MediaQuery.of(context).size.width;
-    return 
-      
-       SizedBox(
-        width: itemWidth,
-         child: AspectRatio(
-          aspectRatio: 342/158,
-           child: Stack(
-            children: [
-              Positioned(
-                bottom: 0,
-                left: 0,
-                top: 0,
-                width: itemWidth*0.6,
-                child:svg.SvgPicture.asset(Assets.imagesPineapple,fit: BoxFit.fill,), ),
-              Container(
-                width: itemWidth*0.5,
+    var itemWidth = MediaQuery.of(context).size.width;
+    return SizedBox(
+      width: itemWidth,
+      child: AspectRatio(
+        aspectRatio: 342 / 158,
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: 0,
+              left: 0,
+              top: 0,
+              width: itemWidth * 0.6,
+              child: svg.SvgPicture.asset(
+                Assets.imagesPineapple,
+                fit: BoxFit.fill,
+              ),
+            ),
+            Container(
+                width: itemWidth * 0.5,
                 decoration: BoxDecoration(
-                  image: DecorationImage(image:Svg(Assets.imagesBackgroundTestfeature),
-                  fit: BoxFit.fill)
-                ),
-                child:Padding(
-                  padding:  EdgeInsets.only(right: 20),
+                    image: DecorationImage(
+                        image: Svg(Assets.imagesBackgroundTestfeature),
+                        fit: BoxFit.fill)),
+                child: Padding(
+                  padding: EdgeInsets.only(right: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 25),
-                      Text('عروض العيد',style: AppTextStyle.regular13.copyWith(color:Colors.black ),),
-                       Text('خصم 25%',style: AppTextStyle.bold19.copyWith(color:Colors.black ),),
-                        Spacer(),
-                       FeaturedButton(onPressed: () {
-                         
-                       },),
-                     Spacer(),
+                      Text(
+                        'عروض العيد',
+                        style: AppTextStyle.regular13
+                            .copyWith(color: Colors.black),
+                      ),
+                      Text(
+                        'خصم 25%',
+                        style:
+                            AppTextStyle.bold19.copyWith(color: Colors.black),
+                      ),
+                      Spacer(),
+                      FeaturedButton(
+                        onPressed: () {},
+                      ),
+                      Spacer(),
                     ],
                   ),
                 )),
-             
-            ],
-               ),
-         ),
-       )
-    ;
+          ],
+        ),
+      ),
+    );
   }
 }

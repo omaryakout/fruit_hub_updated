@@ -38,14 +38,11 @@ class _MainViewBodyState extends State<MainViewBody> {
   }
 }
 
-
-
-
 // IndexedStack(
 //       index:widget. index,
 //       children: [
 //         HomeView(),
-             
+
 //              ProductsView(),
 //       ],
 //     ) ;

@@ -6,7 +6,7 @@ class CartItemEntity extends Equatable {
   final ProductEntity productEntity;
   int count;
 
-ProductEntity getProduct(ProductEntity productEntity) {
+  ProductEntity getProduct(ProductEntity productEntity) {
     return productEntity;
   }
 
@@ -15,7 +15,7 @@ ProductEntity getProduct(ProductEntity productEntity) {
   }
 
   void decrement() {
-      count--;   
+    count--;
   }
 
   num calculateTotalPrice() {
@@ -25,8 +25,7 @@ ProductEntity getProduct(ProductEntity productEntity) {
   num calculateTotalweight() {
     return productEntity.ratingCount * count;
   }
-  
+
   @override
-  
-  List<Object?> get props =>[productEntity];
+  List<Object?> get props => [productEntity];
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class BestSellingViewBody extends StatelessWidget {
   const BestSellingViewBody({super.key});
 

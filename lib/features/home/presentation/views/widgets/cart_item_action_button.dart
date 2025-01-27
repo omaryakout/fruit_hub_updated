@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CartItemActionButton extends StatelessWidget {
-  const CartItemActionButton({super.key, required this.onPressed, required this.icon, required this.iconColor, required this.color});
+  const CartItemActionButton(
+      {super.key,
+      required this.onPressed,
+      required this.icon,
+      required this.iconColor,
+      required this.color});
   final VoidCallback onPressed;
   final IconData icon;
   final Color iconColor;
@@ -11,13 +16,15 @@ class CartItemActionButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        child:Icon(icon,color: iconColor,) ,
+        child: Icon(
+          icon,
+          color: iconColor,
+        ),
         decoration: ShapeDecoration(
-          color: color,
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
-          
-        )),
+            color: color,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(100),
+            )),
       ),
     );
   }

@@ -42,7 +42,7 @@ class ProductRepoImpl implements ProductRepo {
           )
           .toList();
       print(products.elementAt(1));
-      
+
       return right(products);
     } catch (e) {
       return left(ServerFailure('failed to load products'));

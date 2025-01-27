@@ -12,11 +12,26 @@ class CustomDividerWithText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Divider(thickness: 1,color: Color(0xffDDDFDF),)),
-        SizedBox(width: 18,),
-        Text('او',style: AppTextStyle.semiBold16.copyWith(color: Color(0xff141F1F)),),
-        SizedBox(width: 18,),
-        Expanded(child: Divider(thickness: 1,color: Color(0xffDDDFDF),)),
+        Expanded(
+            child: Divider(
+          thickness: 1,
+          color: Color(0xffDDDFDF),
+        )),
+        SizedBox(
+          width: 18,
+        ),
+        Text(
+          'او',
+          style: AppTextStyle.semiBold16.copyWith(color: Color(0xff141F1F)),
+        ),
+        SizedBox(
+          width: 18,
+        ),
+        Expanded(
+            child: Divider(
+          thickness: 1,
+          color: Color(0xffDDDFDF),
+        )),
       ],
     );
   }

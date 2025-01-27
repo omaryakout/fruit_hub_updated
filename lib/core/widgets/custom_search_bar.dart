@@ -5,8 +5,10 @@ import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import '../utils/app_images.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  CustomSearchBar({super.key, });
-  
+  CustomSearchBar({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(

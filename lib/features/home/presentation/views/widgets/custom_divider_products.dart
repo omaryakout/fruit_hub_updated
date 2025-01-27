@@ -14,10 +14,12 @@ class CustomDividerProducts extends StatelessWidget {
           Spacer(),
           Container(
               decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.all(Radius.circular(0),)),
-                  ),
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(0),
+                    )),
+              ),
               child: Image.asset(Assets.imagesArrowSwapHorizontal)),
         ],
       ),

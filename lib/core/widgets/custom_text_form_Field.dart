@@ -34,11 +34,10 @@ class CustomTextFormField extends StatelessWidget {
           return null;
         },
         decoration: InputDecoration(
-            
             fillColor: Color(0xFFF9FAFA),
-          border: buildBorder(),
-          enabledBorder: buildBorder(),
-          focusedBorder: buildBorder(),
+            border: buildBorder(),
+            enabledBorder: buildBorder(),
+            focusedBorder: buildBorder(),
             suffixIcon: suffixIcon,
             label: label),
       ),

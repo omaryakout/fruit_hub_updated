@@ -41,11 +41,8 @@ class CartBarButton extends StatelessWidget {
           onPressed: () {
             if (cartItemEntity.count > 1) {
               cartItemEntity.decrement();
-              
-            } else if (cartItemEntity.count == 1 ) {
+            } else if (cartItemEntity.count == 1) {
               context.read<CartCubit>().deleteProduct(cartItemEntity);
-
-              
             }
 
             context.read<CartItemCubit>().updateCartItem(cartItemEntity);

@@ -10,8 +10,8 @@ class PageWidget extends StatelessWidget {
       required this.title,
       required this.uptext});
   final String image, backgroundImage;
-  final String subtitle ;
-  final Widget title ,uptext ;
+  final String subtitle;
+  final Widget title, uptext;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,13 @@ class PageWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 18,),
+        SizedBox(
+          height: 18,
+        ),
         Title(color: Colors.black, child: title),
-        SizedBox(height: 18,),
+        SizedBox(
+          height: 18,
+        ),
         Text(
           subtitle,
           style: TextStyle(

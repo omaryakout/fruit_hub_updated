@@ -63,7 +63,10 @@ class FruitItem extends StatelessWidget {
                     child: IconButton(
                         onPressed: () {
                           context.read<CartCubit>().addProduct(productEntity);
-                          print(context.read<CartCubit>().overallCartEntity.items);
+                          print(context
+                              .read<CartCubit>()
+                              .overallCartEntity
+                              .items);
                         },
                         icon: Icon(
                           Icons.add,

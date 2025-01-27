@@ -4,16 +4,15 @@ import 'package:provider/provider.dart';
 
 import '../../../domain/entities/order_entity.dart';
 
-class ShippingSection extends StatefulWidget  {
+class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
 
   @override
   State<ShippingSection> createState() => _ShippingSectionState();
-  
-  
 }
 
-class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAliveClientMixin{
+class _ShippingSectionState extends State<ShippingSection>
+    with AutomaticKeepAliveClientMixin {
   int SelectedIndex = 2;
 
   @override
@@ -61,7 +60,7 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
       ],
     );
   }
-  
+
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;

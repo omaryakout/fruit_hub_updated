@@ -15,9 +15,8 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children:[
-        CustomScrollView(
+    return Stack(children: [
+      CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Column(
@@ -32,17 +31,15 @@ class CartViewBody extends StatelessWidget {
               ],
             ),
           ),
-          CartList(
-          ),
+          CartList(),
         ],
       ),
-     Positioned(
-      bottom: MediaQuery.sizeOf(context).height*0.07,
-      left: 16,
-      right: 16,
-       child: PayButtonBlocConsumer(),
-     ),
-      ] 
-    );
+      Positioned(
+        bottom: MediaQuery.sizeOf(context).height * 0.07,
+        left: 16,
+        right: 16,
+        child: PayButtonBlocConsumer(),
+      ),
+    ]);
   }
 }

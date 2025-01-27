@@ -25,29 +25,27 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => CartCubit(),
-        ),
-        BlocProvider(
-          create: (context) => ProductsCubit(getIt<ProductRepo>()),
-        ),
-        BlocProvider(
-          create: (context) => CartItemCubit(),
-        ),
-        
-      ], child:  SafeArea(
-        child: Scaffold(
-            bottomNavigationBar: CustomBottomNavigationBar(
-              onTappedItem: (value) {
-                currentViewIndex = value;
-                setState(() {});
-              },
-            ),
-            body: MainViewBodyBlocConsumer(
-              index: currentViewIndex,
-            ))));
+        providers: [
+          BlocProvider(
+            create: (context) => CartCubit(),
+          ),
+          BlocProvider(
+            create: (context) => ProductsCubit(getIt<ProductRepo>()),
+          ),
+          BlocProvider(
+            create: (context) => CartItemCubit(),
+          ),
+        ],
+        child: SafeArea(
+            child: Scaffold(
+                bottomNavigationBar: CustomBottomNavigationBar(
+                  onTappedItem: (value) {
+                    currentViewIndex = value;
+                    setState(() {});
+                  },
+                ),
+                body: MainViewBodyBlocConsumer(
+                  index: currentViewIndex,
+                ))));
   }
-
-      
 }

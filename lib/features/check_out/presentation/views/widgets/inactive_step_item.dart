@@ -14,13 +14,13 @@ class InactiveStepItem extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-            backgroundColor: Color(0XFFF2F3F3),
-            child: Text(
-              int.toString(),
-              style: AppTextStyle.semiBold13.copyWith(color: Colors.black),
-            ),
-            radius: 11.5,
-            ),
+          backgroundColor: Color(0XFFF2F3F3),
+          child: Text(
+            int.toString(),
+            style: AppTextStyle.semiBold13.copyWith(color: Colors.black),
+          ),
+          radius: 11.5,
+        ),
         SizedBox(
           width: 4,
         ),

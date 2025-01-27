@@ -72,7 +72,6 @@ class ProductsModel {
     };
   }
 
-
   ProductEntity toEntity() {
     return ProductEntity(
       name: name,
@@ -85,30 +84,10 @@ class ProductsModel {
       isOrganic: isOrganic,
       numberOfCalories: numberOfCalories,
       unitAmount: unitAmount,
-       ratingCount: 0,
-      
+      ratingCount: 0,
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // class ProductsModel {
 //   final String name;
@@ -150,7 +129,7 @@ class ProductsModel {
 //         expirationDate: json['expirationDate'],
 //         isOrganic:json['isOrganic'],
 //         numberOfCalories: json['numberOfCalories'],
-        
+
 //         unitAmount: json['unitAmount'],
 //         // reviews:  json['reviews']
 //         //     .map((e) => ReviewModel.fromJson(e))
@@ -169,7 +148,7 @@ class ProductsModel {
 //         isOrganic: isOrganic,
 //         numberOfCalories: numberOfCalories,
 //         unitAmount: unitAmount,
-//         // reviews: reviews.map((e) => e.toEntity(),).toList() 
+//         // reviews: reviews.map((e) => e.toEntity(),).toList()
 //         );
 //   }
 

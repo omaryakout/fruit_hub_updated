@@ -18,7 +18,7 @@ class BestSellingView extends StatelessWidget {
         )),
         actions: [
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 12),
+            padding: EdgeInsets.symmetric(horizontal: 12),
             child: custom_notification_item(),
           )
         ],

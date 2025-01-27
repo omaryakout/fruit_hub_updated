@@ -9,7 +9,10 @@ import 'check_out_view_body.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
   CheckoutStepsPageView(
-      {super.key, required this.pageController, required this.formKey,required this.valueListenable});
+      {super.key,
+      required this.pageController,
+      required this.formKey,
+      required this.valueListenable});
   final PageController pageController;
   final GlobalKey<FormState> formKey;
   ValueListenable<AutovalidateMode> valueListenable;
@@ -35,7 +38,9 @@ class CheckoutStepsPageView extends StatelessWidget {
         valueListenable: valueListenable,
         formKey: formKey,
       ),
-     PaymentSection(pageController: pageController,),
+      PaymentSection(
+        pageController: pageController,
+      ),
     ];
   }
 }

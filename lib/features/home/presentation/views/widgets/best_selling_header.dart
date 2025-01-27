@@ -8,12 +8,17 @@ class BestSellingHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment:CrossAxisAlignment.start ,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('الأكثر مبيعا',style: AppTextStyle.bold16,),
+        Text(
+          'الأكثر مبيعا',
+          style: AppTextStyle.bold16,
+        ),
         Spacer(),
-         Text('المزيد',style: AppTextStyle.regular13,),
-        
+        Text(
+          'المزيد',
+          style: AppTextStyle.regular13,
+        ),
       ],
     );
   }

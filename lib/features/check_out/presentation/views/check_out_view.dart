@@ -34,16 +34,14 @@ class _CheckOutViewState extends State<CheckOutView> {
         widget.overallCartEntity,
         uid: getUser().uid);
 
-       
     super.initState();
   }
-OrdersRepo orderRepo =OrdersRepoImpl(
-  dataBaseService: FireStoreDataBase( )
-)  ;
+
+  OrdersRepo orderRepo = OrdersRepoImpl(dataBaseService: FireStoreDataBase());
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddOrderCubit(ordersRepo:orderRepo ),
+      create: (context) => AddOrderCubit(ordersRepo: orderRepo),
       child: Scaffold(
         appBar: buildAppBar(
           title: 'الشحن',

@@ -9,20 +9,17 @@ class CustomGridView extends StatelessWidget {
   List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
-    return 
-        SliverGrid(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 163 / 214,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 8),
-          delegate: SliverChildBuilderDelegate(
-              childCount: products.length,
-              (context, index) => FruitItem(
-                    productEntity: products[index],
-                  )),
-        );
-      
-    
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 163 / 214,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 8),
+      delegate: SliverChildBuilderDelegate(
+          childCount: products.length,
+          (context, index) => FruitItem(
+                productEntity: products[index],
+              )),
+    );
   }
 }

@@ -17,19 +17,19 @@ class CustomGridViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, state) {
         if (state is ProductsFailure) {
-          return ErrorBar(text: state.errMessage,);
-        }
-        else if (state is ProductsSucess) {
+          return ErrorBar(
+            text: state.errMessage,
+          );
+        } else if (state is ProductsSucess) {
           return CustomGridView(
             products: state.products,
           );
-        }else{
-           return Skeletonizer.sliver (
+        } else {
+          return Skeletonizer.sliver(
             enabled: true,
             child: CustomGridView(products: GetDummyProducts().getDummyList()),
-           );
+          );
         }
-       
       },
     );
   }

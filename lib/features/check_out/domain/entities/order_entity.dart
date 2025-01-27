@@ -20,4 +20,23 @@ class OrderEntity {
   }) {
     log('init order entity $place');
   }
+
+  double calcShippingCost() {
+    if (payWithCash!) {
+      return 30;
+    } else {
+      return 0;
+    }
+  }
+
+  double calculateShippingDiscount() {
+    return 0;
+  }
+
+  double calculateTotalPriceAfterDiscountAndShipping() {
+    return overallCartEntity.calculateTotalPrice()+calcShippingCost() -
+        calculateShippingDiscount();
+  }
+
+  
 }

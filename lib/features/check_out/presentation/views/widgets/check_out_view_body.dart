@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
@@ -11,8 +13,12 @@ import 'package:fruits_hub/features/check_out/presentation/views/widgets/payment
 import 'package:fruits_hub/features/check_out/presentation/views/widgets/shipping_section.dart';
 import 'package:provider/provider.dart';
 import '../../../../../core/helper_functions/build_error_bar.dart';
+import '../../../../../core/keys/paypal_keys.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../domain/entities/order_entity.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+
+import '../../../domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
 
 class CheckOutViewBody extends StatefulWidget {
   const CheckOutViewBody({super.key});
@@ -77,6 +83,8 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                   _selectShippingMethod(context);
                 } else if (pageController.page == 1) {
                   _handleshippingAddress();
+                } else {
+                  processPayment(context);
                 }
                 context.read<AddOrderCubit>().addData(order: orderEntity);
               },
@@ -132,11 +140,37 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
       return 'التالي';
     }
   }
+
+  void processPayment(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
+    PaypalPaymentEntity paypalPaymentEntity =
+        PaypalPaymentEntity.fromEntity(orderEntity);
+    log(paypalPaymentEntity.toJson().toString());
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => PaypalCheckoutView(
+        sandboxMode: true,
+        clientId: PaypalKeys.clientId,
+        secretKey: PaypalKeys.clientSecret,
+        transactions: [
+          paypalPaymentEntity.toJson(),
+        ],
+        note: "Contact us for any questions on your order.",
+        onSuccess: (Map params) async {
+          print("onSuccess: $params");
+          Navigator.of(context).pop();
+        },
+        onError: (error) {
+          print("onError: $error");
+          log(error.toString());
+          Navigator.pop(context);
+        },
+        onCancel: () {
+          print('cancelled:');
+        },
+      ),
+    ));
+  }
 }
-
-
-
-
 
 // class CheckOutViewBody extends StatefulWidget {
 //   const CheckOutViewBody({super.key});

@@ -46,13 +46,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     Future.delayed(const Duration(seconds: 10), () {
       if (isonboardseen) {
         var isLoggedin = FireBaseAuthService().isLoggedin();
-        if(isLoggedin ){
-         Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+        if (isLoggedin) {
+          Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+        } else {
+          Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
         }
-        else{ 
-Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
-        }
-        
       } else {
         Navigator.of(context)
             .pushReplacementNamed(OnBoardGeneralView.routeName);

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper_functions/build_error_bar.dart';
 import 'package:fruits_hub/features/auth/presentation/sign_up_view_page.dart';
 
-
 import 'cubits/signup_cubit/signup_cubit.dart';
 
 class ConsumerBlocSignUp extends StatelessWidget {
@@ -24,9 +23,7 @@ class ConsumerBlocSignUp extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return 
-          
-             SignUpViewBody();
+        return SignUpViewBody();
       },
     );
   }

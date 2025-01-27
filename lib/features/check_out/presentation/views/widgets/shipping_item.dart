@@ -10,11 +10,10 @@ class ShippingItem extends StatelessWidget {
       required this.subTitle,
       required this.price,
       required this.isSelected,
-      required this.onCallBack
-      });
+      required this.onCallBack});
   final String title, subTitle, price;
- final bool isSelected;
- final VoidCallback  onCallBack;
+  final bool isSelected;
+  final VoidCallback onCallBack;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,9 +29,12 @@ class ShippingItem extends StatelessWidget {
         width: double.infinity,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-            side: BorderSide(color: isSelected ? AppColors.primaryColor : const Color(0x33D9D9D9), )
-          ),
+              borderRadius: BorderRadius.circular(4),
+              side: BorderSide(
+                color: isSelected
+                    ? AppColors.primaryColor
+                    : const Color(0x33D9D9D9),
+              )),
           color: const Color(0x33D9D9D9),
         ),
         child: IntrinsicHeight(
@@ -47,7 +49,8 @@ class ShippingItem extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: AppTextStyle.semiBold13.copyWith(color: Colors.black),
+                    style:
+                        AppTextStyle.semiBold13.copyWith(color: Colors.black),
                   ),
                   const SizedBox(
                     height: 6,
@@ -62,8 +65,8 @@ class ShippingItem extends StatelessWidget {
               Center(
                 child: Text(
                   price,
-                  style:
-                      AppTextStyle.bold13.copyWith(color: AppColors.primaryColor),
+                  style: AppTextStyle.bold13
+                      .copyWith(color: AppColors.primaryColor),
                 ),
               ),
             ],

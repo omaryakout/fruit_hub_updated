@@ -8,7 +8,7 @@ import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/utils/container_decoration.dart';
 
 class PaymentSection extends StatelessWidget {
-   PaymentSection({super.key,required this.pageController});
+  PaymentSection({super.key, required this.pageController});
   PageController pageController;
 
   @override

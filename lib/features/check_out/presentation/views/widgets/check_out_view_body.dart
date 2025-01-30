@@ -17,7 +17,6 @@ import '../../../../../core/keys/paypal_keys.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../domain/entities/order_entity.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-
 import '../../../domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
 
 class CheckOutViewBody extends StatefulWidget {
@@ -57,9 +56,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddOrderCubit, AddOrderState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Column(
           children: [
@@ -93,7 +90,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                 style: AppTextStyle.bold13.copyWith(color: Colors.white),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
           ],
@@ -117,7 +114,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       pageController.animateToPage(currentPageIndex + 1,
-          duration: Duration(milliseconds: 400), curve: Curves.bounceIn);
+          duration: const Duration(milliseconds: 400), curve: Curves.bounceIn);
     } else {
       valueNotifier.value = AutovalidateMode.always;
     }
@@ -146,6 +143,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     PaypalPaymentEntity paypalPaymentEntity =
         PaypalPaymentEntity.fromEntity(orderEntity);
     log(paypalPaymentEntity.toJson().toString());
+    var addOrder = context.read<AddOrderCubit>();
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
@@ -157,6 +155,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         note: "Contact us for any questions on your order.",
         onSuccess: (Map params) async {
           print("onSuccess: $params");
+          addOrder.addData(order: orderEntity);
           Navigator.of(context).pop();
         },
         onError: (error) {

@@ -1,11 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
 import '../../../auth/domain/repos/orders_repo/orders_repo.dart';
 import '../../domain/entities/order_entity.dart';
-
 part 'add_order_state.dart';
-
+    
+    
 class AddOrderCubit extends Cubit<AddOrderState> {
   AddOrderCubit({required this.ordersRepo}) : super(AddOrderInitial());
   OrdersRepo ordersRepo;

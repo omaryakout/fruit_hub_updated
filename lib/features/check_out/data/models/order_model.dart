@@ -42,6 +42,7 @@ class OrderModel {
             (e) => e.toJson(),
           )
           .toList(),
+          'status':'pending',
       'paymentMethod': paymentMethod,
     };
   }
